@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaiUnify</title>
+  <meta name="description" content="NaiUnify engineers modern software, automation, and analytics platforms tailored for fast-growing companies  and global markets.">
+  <meta name="keywords" content="NaiUnify, enterprise software company, custom dashboards,tech consultancy, automation platforms">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <style id="app-style">
+    :root {
+      --primary: #ff1f3d;
+      --primary-dark: #b91c1c;
+      --primary-soft: #ffe4e6;
+      --gray-900: #0f172a;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: clip !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #f9fafb 0%, #fff5f7 50%, #f0f9ff 100%);
+      color: #0f172a;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, rgba(255,31,61,0.95) 0%, rgba(185,28,28,0.98) 50%, #1a1a2e 100%);
+      color: #fff;
+    }
+
+    .brand-logo {
+      height: 2.75rem;
+      width: 2.75rem;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    .brand-title {
+      font-size: 1.85rem;
+      background: linear-gradient(135deg, #ff1f3d 0%, #b91c1c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    nav .container {
+      padding-top: 0.875rem;
+      padding-bottom: 0.875rem;
+    }
+
+    .main-nav {
+      background: transparent;
+      box-shadow: none;
+      z-index: 60;
+      padding: 0.75rem 0.75rem 0 0.75rem;
+    }
+
+    .main-nav .container {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+    }
+
+    .main-nav::after {
+      content: '';
+      position: fixed;
+      bottom: -12px;
+      left: calc(0.75rem + 2rem);
+      right: calc(0.75rem + 2rem);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,31,61,0.3), transparent);
+      z-index: 60;
+    }
+
+    @media (max-width: 768px) {
+      .main-nav {
+        padding: 0.5rem 0.5rem 0 0.5rem;
+      }
+
+      .main-nav .container {
+        border-radius: 0.75rem;
+      }
+    }
+
+    .card {
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform, box-shadow;
+      border: 1px solid rgba(255, 31, 61, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 32px 56px rgba(255, 31, 61, 0.25);
+      border-color: rgba(255, 31, 61, 0.2);
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-slide {
+      display: none;
+    }
+
+    .testimonial-slide.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(340px, 85%);
+      background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+      border-left: 1px solid rgba(15,23,42,0.08);
+      box-shadow: -20px 0 40px rgba(15,23,42,0.15);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 55;
+      padding: 2rem 1.75rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15,23,42,0.5);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.4s;
+      z-index: 50;
+      backdrop-filter: blur(4px);
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 999px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 12px 32px -8px rgba(255, 31, 61, 0.6);
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 48px -12px rgba(255, 31, 61, 0.8);
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #8b0a1a 100%);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.3), transparent, transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-primary:hover:after {
+      transform: translateX(100%);
+    }
+
+    .accent-pill {
+      background: linear-gradient(135deg, rgba(255,31,61,0.12) 0%, rgba(255,31,61,0.06) 100%);
+      color: var(--primary);
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1.5px solid rgba(255,31,61,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .accent-pill:hover {
+      border-color: rgba(255,31,61,0.5);
+      background: linear-gradient(135deg, rgba(255,31,61,0.16) 0%, rgba(255,31,61,0.1) 100%);
+      transform: translateY(-2px);
+    }
+
+    /* Modernized bright red theme overrides */
+    .bg-red-600 { background-color: var(--primary) !important; }
+    .hover\:bg-red-700:hover { background-color: var(--primary-dark) !important; }
+    .text-red-600 { color: var(--primary) !important; }
+    .hover\:text-red-800:hover { color: var(--primary-dark) !important; }
+    .border-red-600 { border-color: var(--primary) !important; }
+    .bg-red-100 { background-color: var(--primary-soft) !important; }
+    .text-red-400 { color: #ff6b81 !important; }
+    .text-red-500 { color: var(--primary) !important; }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15,23,42,0.85);
+      z-index: 48;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .modal-content {
+      width: min(720px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 1rem;
+      background: #fff;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      color: #0f172a;
+    }
+
+    #mobile-menu-button {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #0f172a;
+    }
+
+    #mobile-menu-button:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .brand-logo {
+        height: 2.25rem;
+        width: 2.25rem;
+      }
+
+      .brand-title {
+        font-size: 1.35rem;
+      }
+
+      nav .container {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      h1 {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 1.75rem !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gradient-bg {
+        padding-top: 4.5rem !important;
+      }
+
+      h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.25 !important;
+      }
+
+      h2 {
+        font-size: 1.5rem !important;
+      }
+
+      .card {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-nav fixed w-full top-0">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="#" class="text-2xl font-bold flex items-center gap-3 brand-title z-10 hover:opacity-90 transition">
+          <img src="NAIUNIFY LOGO2.png" alt="NaiUnify logo" class="h-11 w-11 md:h-11 md:w-11 object-contain brand-logo" loading="eager">
+          <div class="leading-tight">
+            <span class="block text-transparent brand-title">NaiUnify</span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-10 font-medium text-gray-700">
+          <a href="#services" class="hover:text-red-600 transition duration-300 relative group">Services
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#projects" class="hover:text-red-600 transition duration-300 relative group">Solutions
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#industries" class="hover:text-red-600 transition duration-300 relative group">Industries
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#process" class="hover:text-red-600 transition duration-300 relative group">Process
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#about" class="hover:text-red-600 transition duration-300 relative group">About
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#contact" class="hover:text-red-600 transition duration-300 relative group">Contact
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center gap-4">
+          <a href="#contact" class="btn-primary px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base">
+            Talk to Us
+          </a>
+        </div>
+
+        <button id="mobile-menu-button" class="lg:hidden text-gray-900 ml-auto z-10" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu lg:hidden">
+      <div class="flex items-center justify-between mb-8">
+        <p class="text-lg font-semibold text-gray-900">Menu</p>
+        <button id="close-mobile-menu" class="text-gray-500 text-3xl leading-none w-8 h-8 flex items-center justify-center hover:bg-gray-200 rounded-lg transition" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="space-y-1">
+        <a href="#services" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">Services</a>
+        <a href="#projects" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">Solutions</a>
+        <a href="#industries" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">Industries</a>
+        <a href="#process" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">Process</a>
+        <a href="#about" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">About</a>
+        <a href="#contact" class="block font-semibold text-gray-900 px-4 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-300">Contact</a>
+        <a href="#contact" class="btn-primary block text-center rounded-lg py-3 font-semibold mt-6 w-full">Talk to Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay lg:hidden"></div>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-center pt-28 md:pt-32 pb-12 md:pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+      <svg width="100%" height="100%" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+    </div>
+    <div class="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 py-12 md:py-16">
+      <div data-aos="fade-right" class="max-w-5xl mx-auto text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-tight mb-6 md:mb-8 text-white">
+          We engineer intelligent platforms, dashboards, and automation that accelerate modern companies.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-100/85 mb-10 md:mb-12 leading-relaxed max-w-3xl">
+          NaiUnify delivers full-stack products, and reliability programs that give operations, finance, and teams a realtime command of their business.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#contact" class="btn-primary px-8 py-3.5 rounded-lg font-semibold shadow-xl inline-flex items-center justify-center hover:shadow-2xl transition-all">Get Started <i class="fa-solid fa-arrow-right ml-2"></i></a>
+          <a href="#projects" class="px-8 py-3.5 rounded-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-red-600 transition-all duration-300">View Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 bg-white relative">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="accent-pill mb-3 inline-block">Solutions</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What our teams deliver</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          From concept to launch to lifecycle support, NaiUnify is the engineering backbone behind mission-critical experiences.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center lg:justify-items-center">
+        <div class="card bg-gray-50 rounded-2xl p-8 border border-gray-100 w-full max-w-xs mx-auto" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-red-100 text-red-600 mb-6">
+            <i class="fa-solid fa-network-wired text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">System Integration</h3>
+          <p class="text-gray-600">API ecosystems, workflow engines, and scalable data infrastructure aligned to your business logic.</p>
+        </div>
+        <div class="card bg-gray-50 rounded-2xl p-8 border border-gray-100 w-full max-w-xs mx-auto" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-red-100 text-red-600 mb-6">
+            <i class="fa-solid fa-chart-line text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Analytics & Insight</h3>
+          Executive dashboards, forecasting engines, and governed analytics solutions.</div>
+        <div class="card bg-gray-50 rounded-2xl p-8 border border-gray-100 w-full max-w-xs mx-auto" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-red-100 text-red-600 mb-6">
+            <i class="fa-solid fa-layer-group text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Product Engineering</h3>
+          <p class="text-gray-600">Full-stack web platforms, portals, and digital products built with resilient architectures and seamless UX.</p>
+        </div>
+        
+      </div>
+      <div class="text-center mt-14" data-aos="fade-up">
+        <a href="#projects" class="btn-primary inline-flex items-center justify-center px-10 py-3 rounded-md font-semibold shadow-lg shadow-red-200">
+          Explore deployments
+          <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="grid lg:grid-cols-1 gap-10 items-center">
+        <div data-aos="fade-right">
+          <span class="accent-pill mb-4 inline-block">Industries</span>
+          <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Built for regulated and data-intensive teams</h2>
+          <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">NaiUnify blends domain knowledge with engineering so that software mirrors the realities of your industry.</p>
+          <ul class="space-y-4 text-gray-700 font-medium">
+            <li class="flex items-center"><i class="fa-solid fa-circle-check text-red-600 mr-4 text-lg"></i><span>Supply chain & logistics networks</span></li>
+            <li class="flex items-center"><i class="fa-solid fa-circle-check text-red-600 mr-4 text-lg"></i><span>Retail, e-commerce & marketplaces</span></li>
+            <li class="flex items-center"><i class="fa-solid fa-circle-check text-red-600 mr-4 text-lg"></i><span>Financial & fintech platforms</span></li>
+            <li class="flex items-center"><i class="fa-solid fa-circle-check text-red-600 mr-4 text-lg"></i><span>Professional & legal services</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="text-center mb-20" data-aos="fade-up">
+        <span class="accent-pill mb-4 inline-block">Case Studies</span>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Operational breakthroughs engineered by NaiUnify</h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Evidence-led engagements that unlock revenue, resilience, and clarity.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card bg-white rounded-2xl overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-56 bg-gray-300 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=500&q=60" alt="Developers reviewing commerce platform code" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+          </div>
+          <div class="p-8">
+            <p class="text-xs uppercase tracking-widest text-red-600 font-bold mb-3">E-commerce System</p>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">Unified marketplace engine</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">A retail brand unified its storefronts, payment systems, and loyalty programs into a modular headless commerce platform that enables new market launches in days.</p>
+            <button class="text-red-600 font-bold inline-flex items-center view-project hover:gap-3 transition-all group" data-project="1">
+              View Case Study <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card bg-white rounded-2xl overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-56 bg-gray-300 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=500&q=60" alt="Engineers monitoring predictive logistics dashboards" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+          </div>
+          <div class="p-8">
+            <p class="text-xs uppercase tracking-widest text-red-600 font-bold mb-3">Inventory System</p>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">Inventory insights</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">A distribution network streamlined inventory management, ensuring products are restocked on time and reducing preventable stockouts by 40%.</p>
+            <button class="text-red-600 font-bold inline-flex items-center view-project hover:gap-3 transition-all group" data-project="2">
+              View Case Study <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card bg-white rounded-2xl overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-56 bg-gray-300 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=60" alt="Product team iterating on people operations app" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+          </div>
+          <div class="p-8">
+            <p class="text-xs uppercase tracking-widest text-red-600 font-bold mb-3">HR Management</p>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">HR Operations</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">An organization automated onboarding, compliance, and performance insights with a secure employee experience platform embedded into daily workflows.</p>
+            <button class="text-red-600 font-bold inline-flex items-center view-project hover:gap-3 transition-all group" data-project="3">
+              View Case Study <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close close-project text-2xl cursor-pointer">&times;</span>
+      <div id="modal-content-container"></div>
+    </div>
+  </div>
+
+  <!-- Legal Modal -->
+  <div id="legal-modal" class="modal">
+    <div class="modal-content">
+      <span class="close close-legal text-2xl cursor-pointer">&times;</span>
+      <div id="legal-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <section id="process" class="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="text-center mb-20" data-aos="fade-up">
+        <span class="accent-pill mb-4 inline-block">Engagement</span>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Delivery designed for clarity and speed</h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Clients stay informed with clear roadmaps, demos, and measurable results</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-red-600 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center font-bold mb-6 text-lg group-hover:shadow-lg group-hover:shadow-red-200 transition-all">01</div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Intelligence Sprint</h3>
+          <p class="text-gray-600 leading-relaxed">Discovery, architecture, and KPI modeling that define exactly what success looks like.</p>
+        </div>
+        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-red-600 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center font-bold mb-6 text-lg group-hover:shadow-lg group-hover:shadow-red-200 transition-all">02</div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Product Build</h3>
+          <p class="text-gray-600 leading-relaxed">We release improvements regularly, ensuring quality and incorporating client feedback at every stage.</p>
+        </div>
+        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-red-600 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center font-bold mb-6 text-lg group-hover:shadow-lg group-hover:shadow-red-200 transition-all">03</div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Launch + Adoption</h3>
+          <p class="text-gray-600 leading-relaxed">We provide cutover plans, training guides, and performance tracking to make sure your rollout is successful and adopted smoothly</p>
+        </div>
+        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-red-600 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center font-bold mb-6 text-lg group-hover:shadow-lg group-hover:shadow-red-200 transition-all">04</div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Continuous Care</h3>
+          <p class="text-gray-600 leading-relaxed">We maintain reliability, evolve features, and provide embedded analytics to maximize long-term impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+ 
+  <!-- About -->
+  <section id="about" class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="grid lg:grid-cols-1 gap-12 items-center">
+        <div data-aos="fade-right">
+          <span class="accent-pill mb-4 inline-block">About NaiUnify</span>
+          <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900">A team of engineers, designers and analysts</h2>
+          <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+            NaiUnify  was founded to give enterprises and businesses a product  that blends strategic advisory with  engineering. We are headquartered in Nairobi.
+          </p>
+          <p class="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed">
+            Our teams stay embedded beyond launch, operating as an extension of your product, operations, or transformation office. Every engagement is measured against ROI, adoption, and reliability—not vanity metrics.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-red-100 group-hover:bg-red-600 transition-colors">
+                  <i class="fas fa-check-circle text-red-600 group-hover:text-white transition-colors"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Product-first mindset</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">We translate business goals into roadmaps, not just features.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-red-100 group-hover:bg-red-600 transition-colors">
+                  <i class="fas fa-check-circle text-red-600 group-hover:text-white transition-colors"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Secure by design</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">Compliance playbooks, zero-trust access, and comprehensive audit logs, ensuring security and accountability at every step.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-red-100 group-hover:bg-red-600 transition-colors">
+                  <i class="fas fa-check-circle text-red-600 group-hover:text-white transition-colors"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Human-centered UX</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">Interfaces built for clarity, accessibility, and adoption.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-red-100 group-hover:bg-red-600 transition-colors">
+                  <i class="fas fa-check-circle text-red-600 group-hover:text-white transition-colors"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Delivery discipline</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">Transparent sprints, automated testing, and visibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="accent-pill mb-3 inline-block">Get in touch</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Let’s build your next platform</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Share a challenge, integration wish-list, or idea. Our consultants will respond within one business day.</p>
+      </div>
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div data-aos="fade-right">
+          <div class="bg-white rounded-2xl p-10 h-full shadow-lg">
+            <h3 class="text-2xl font-bold mb-8 text-gray-900">Contact information</h3>
+            <div class="space-y-8">
+              <div class="flex items-start gap-4 group">
+                <div class="bg-gradient-to-br from-red-100 to-red-50 rounded-2xl w-14 h-14 flex items-center justify-center text-red-600 group-hover:from-red-600 group-hover:to-red-700 group-hover:text-white transition-all flex-shrink-0">
+                  <i class="fas fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 mb-1">Email</p>
+                  <a href="mailto:naiunify@gmail.com" class="text-red-600 hover:text-red-800 font-medium transition">naiunify@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 group">
+                <div class="bg-gradient-to-br from-green-100 to-green-50 rounded-2xl w-14 h-14 flex items-center justify-center text-green-600 group-hover:from-green-600 group-hover:to-green-700 group-hover:text-white transition-all flex-shrink-0">
+                  <i class="fab fa-whatsapp text-xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 mb-1">WhatsApp</p>
+                  <a href="https://wa.me/254768838843?text=Hi%2C%20I%E2%80%99d%20like%20to%20discuss%20a%20project.%20I%E2%80%99m%20interested%20in%20having%20a%20system%20for%20my%20business%20and%20would%20like%20to%20understand%20how%20your%20process%20works%2C%20explain%20my%20business%20needs%2C%20the%20estimated%20cost%2C%20and%20how%20we%20can%20move%20forward." target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-800 font-medium transition">Start a conversation</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 group">
+                <div class="bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl w-14 h-14 flex items-center justify-center text-blue-600 group-hover:from-blue-600 group-hover:to-blue-700 group-hover:text-white transition-all flex-shrink-0">
+                  <i class="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 mb-1">Location</p>
+                  <p class="text-gray-600">Nairobi, Kenya</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-left">
+          <form id="contact-form" class="bg-white rounded-2xl p-10 shadow-lg">
+            <h3 class="text-2xl font-bold mb-8 text-gray-900">Tell us about the initiative</h3>
+            <div class="space-y-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-bold mb-3">Company / Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition bg-gray-50 hover:bg-white">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-bold mb-3">Email address</label>
+                <input type="email" id="email" name="email" required class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition bg-gray-50 hover:bg-white">
+              </div>
+              <div>
+                <label for="project" class="block text-gray-700 font-bold mb-3">Project focus</label>
+                <select id="project" name="project" class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition bg-gray-50 hover:bg-white">
+                  <option value="">Select a project type</option>
+                  <option value="system">Systems & Integrations</option>
+                  <option value="dashboard">Analytics & Dashboards</option>
+                  <option value="product">Digital Product / Portal</option>
+                  <option value="reliability">DevOps & Reliability</option>
+                  <option value="other">Other Initiative</option>
+                </select>
+              </div>
+              <div>
+                <label for="message" class="block text-gray-700 font-bold mb-3">Message</label>
+                <textarea id="message" name="message" rows="5" required class="w-full px-5 py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition bg-gray-50 hover:bg-white resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full btn-primary px-6 py-4 rounded-lg font-bold shadow-xl hover:shadow-2xl transition-all">
+                Send to NaiUnify
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16 md:py-20">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <a href="#" class="text-2xl font-bold inline-block mb-6">
+            <span class="text-red-500">Nai</span><span class="text-white">Unify</span>
+          </a>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+            NaiUnify designs, builds, and scales platforms that keep ambitious businesses in control of every decision.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-6 text-white">Quick links</h3>
+          <ul class="space-y-4 text-gray-400 text-sm md:text-base">
+            <li><a href="#services" class="hover:text-white hover:translate-x-1 transition-all inline-block">Services</a></li>
+            <li><a href="#projects" class="hover:text-white hover:translate-x-1 transition-all inline-block">Solutions</a></li>
+            <li><a href="#industries" class="hover:text-white hover:translate-x-1 transition-all inline-block">Industries</a></li>
+            <li><a href="#process" class="hover:text-white hover:translate-x-1 transition-all inline-block">Process</a></li>
+            <li><a href="#about" class="hover:text-white hover:translate-x-1 transition-all inline-block">About</a></li>
+            <li><a href="#contact" class="hover:text-white hover:translate-x-1 transition-all inline-block">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-6 text-white">Services</h3>
+          <ul class="space-y-4 text-gray-400 text-sm md:text-base">
+            <li><a href="#" class="hover:text-white hover:translate-x-1 transition-all inline-block">Custom Systems Development</a></li>
+            <li><a href="#" class="hover:text-white hover:translate-x-1 transition-all inline-block">Analytics & Dashboards</a></li>
+            <li><a href="#" class="hover:text-white hover:translate-x-1 transition-all inline-block">Digital Product Engineering</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-gray-500 text-xs md:text-sm">© 2026 NaiUnify. All rights reserved.</p>
+        <div class="flex gap-6 md:gap-8 items-center">
+          <a id="privacy-link" href="javascript:void(0)" class="text-gray-500 hover:text-white text-xs md:text-sm transition duration-300">Privacy Policy</a>
+          <a id="terms-link" href="javascript:void(0)" class="text-gray-500 hover:text-white text-xs md:text-sm transition duration-300">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp & Back to Top -->
+  <a href="https://wa.me/254768838843?text=Hi%2C%20I%E2%80%99d%20like%20to%20discuss%20a%20project.%20I%E2%80%99m%20interested%20in%20having%20a%20system%20for%20my%20business%20and%20would%20like%20to%20understand%20how%20your%20process%20works%2C%20explain%20my%20business%20needs%2C%20the%20estimated%20cost%2C%20and%20how%20we%20can%20move%20forward." class="fixed bottom-6 left-6 bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-full p-4 shadow-xl z-40 w-16 h-16 flex items-center justify-center transition-all hover:scale-110 duration-300" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+  <button id="back-to-top" class="fixed bottom-6 right-6 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-xl hidden w-16 h-16 flex items-center justify-center transition-all hover:scale-110 duration-300" aria-label="Back to top">
+    <i class="fas fa-chevron-up text-xl"></i>
+  </button>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" as="image" href="NAIUNIFY LOGO2.png">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script id="app-script" defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 200,
+        easing: 'ease-out',
+        once: true,
+        startEvent: 'load'
+      });
+
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const mobileMenuCloseButton = document.getElementById('close-mobile-menu');
+
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+        document.body.classList.add('menu-open');
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      }
+
+      mobileMenuButton.addEventListener('click', openMobileMenu);
+
+      if (mobileMenuCloseButton) {
+        mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
+      }
+
+      if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+      }
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => closeMobileMenu());
+      });
+
+      const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+      const prevButton = document.getElementById('prev-testimonial');
+      const nextButton = document.getElementById('next-testimonial');
+      const dots = document.querySelectorAll('.testimonial-dot');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        if (!testimonialSlides.length) return;
+        testimonialSlides.forEach(slide => slide.classList.remove('active'));
+        testimonialSlides[index].classList.add('active');
+        if (dots.length) {
+          dots.forEach(dot => dot.classList.remove('active'));
+          if (dots[index]) {
+            dots[index].classList.add('active');
+          }
+        }
+        currentSlide = index;
+      }
+
+      if (testimonialSlides.length) {
+        showSlide(0);
+      }
+
+      if (prevButton && testimonialSlides.length > 1) {
+        prevButton.addEventListener('click', function() {
+          let index = currentSlide - 1;
+          if (index < 0) index = testimonialSlides.length - 1;
+          showSlide(index);
+        });
+      }
+
+      if (nextButton && testimonialSlides.length > 1) {
+        nextButton.addEventListener('click', function() {
+          let index = currentSlide + 1;
+          if (index >= testimonialSlides.length) index = 0;
+          showSlide(index);
+        });
+      }
+
+      if (dots.length && testimonialSlides.length) {
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', function() {
+            showSlide(index);
+          });
+        });
+      }
+
+      if (testimonialSlides.length > 1) {
+        setInterval(function() {
+          let index = currentSlide + 1;
+          if (index >= testimonialSlides.length) index = 0;
+          showSlide(index);
+        }, 6000);
+      }
+
+      const modal = document.getElementById('project-modal');
+      const modalContent = document.getElementById('modal-content-container');
+      const closeButton = document.querySelector('.close-project');
+      const viewButtons = document.querySelectorAll('.view-project');
+
+      const projectData = {
+        1: {
+          title: "Unified Marketplace Engine",
+          challenge: "Managing multiple stores and promotions manually slowed down launches and created inconsistent customer experiences.",
+          solution: "Implemented a commerce platform with shared product graphs, adaptive pricing, and centralized loyalty logic so teams can roll out new experiences in days.",
+          image: "https://cdn.dribbble.com/users/1355613/screenshots/15753898/media/033e1dc80bd048393ca5b0d585d3720e.png?compress=1&resize=1200x900&vertical=top"
+        },
+        2: {
+          title: "Inventory insights",
+          challenge: "Limited oversight of the supply chain caused late deliveries for 20% of orders during busy periods",
+          solution: "Implemented a smart inventory system that predicts demand, prevents stockouts, and ensures timely deliveries",
+          image: "https://cdn.dribbble.com/users/25514/screenshots/15192295/media/7db04b2d30eb54f23218f8da0ffed0b7.png?compress=1&resize=1200x900&vertical=top"
+        },
+        3: {
+          title: "HR Operations",
+          challenge: "HR, compliance, and finance teams worked from spreadsheets, delaying onboarding, policies & approvals, and multi-country payroll approvals.",
+          solution: "Introduced a secure HR management portal with workflow automation, digital document vaults, and role-based analytics so leaders see workforce health in real time.",
+          image: "https://cdn.dribbble.com/users/330915/screenshots/14916560/media/9cc5a6482a35d861cb7631c6fba5884d.png?compress=1&resize=1200x900&vertical=top"
+        }
+      };
+
+      viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const projectId = this.getAttribute('data-project');
+          const project = projectData[projectId];
+          if (project) {
+            modalContent.innerHTML = `
+              
+              <h3 class="text-2xl font-bold mb-2">${project.title}</h3>
+              <div class="mb-6">
+                <h4 class="text-lg font-bold mb-2">The Challenge</h4>
+                <p class="text-gray-700">${project.challenge}</p>
+              </div>
+              <div class="mb-4">
+                <h4 class="text-lg font-bold mb-2">Our Solution</h4>
+                <p class="text-gray-700">${project.solution}</p>
+              </div>
+            `;
+            modal.classList.add('show');
+          }
+        });
+      });
+
+      closeButton.addEventListener('click', function() {
+        modal.classList.remove('show');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          modal.classList.remove('show');
+        }
+      });
+
+      // Legal modal for Privacy Policy and Terms of Service
+      const legalModal = document.getElementById('legal-modal');
+      const legalContent = document.getElementById('legal-modal-content');
+      const privacyLink = document.getElementById('privacy-link');
+      const termsLink = document.getElementById('terms-link');
+      const legalCloseButton = document.querySelector('.close-legal');
+
+      const legalCopy = {
+        privacy: `
+          <h3 class="text-2xl font-bold mb-4">Privacy Policy</h3>
+          <p class="text-gray-700 mb-3">NaiUnify respects your privacy and is committed to protecting any personal information you share with us.</p>
+          <p class="text-gray-700 mb-3">We collect contact details and project information only when you voluntarily submit them through our forms or communication channels. This information is used solely to respond to your inquiries, prepare proposals, and deliver our services.</p>
+          <p class="text-gray-700 mb-3">We do not sell your data to third parties. Limited sharing may occur with trusted partners only when necessary to deliver a specific engagement, and always under confidentiality obligations.</p>
+          <p class="text-gray-700 mb-3">We take reasonable technical and organizational measures to secure your data, including restricted access, encrypted communication channels where appropriate, and periodic reviews of our practices.</p>
+        `,
+        terms: `
+          <h3 class="text-2xl font-bold mb-4">Terms of Service</h3>
+          <p class="text-gray-700 mb-3">By accessing or using the NaiUnify website, you agree to these terms of service.</p>
+          <p class="text-gray-700 mb-3">All content on this site, including branding, copy, visuals, and layouts, is provided for general information about our services and does not constitute legal, financial, or technical advice.</p>
+          <p class="text-gray-700 mb-3">Any project or consulting engagement with NaiUnify will be governed by a separate written agreement that outlines scope, deliverables, timelines, fees, and responsibilities.</p>
+          <p class="text-gray-700 mb-3">You agree not to misuse this site, attempt unauthorized access, or engage in activities that could harm the platform or other users.</p>
+          <p class="text-gray-700 mb-3">We may update these terms periodically. Continued use of the site after changes are posted constitutes acceptance of the updated terms.</p>
+        `
+      };
+
+      function openLegalModal(type) {
+        legalContent.innerHTML = legalCopy[type] || '';
+        legalModal.classList.add('show');
+      }
+
+      if (privacyLink) {
+        privacyLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          openLegalModal('privacy');
+        });
+      }
+
+      if (termsLink) {
+        termsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          openLegalModal('terms');
+        });
+      }
+
+      if (legalCloseButton) {
+        legalCloseButton.addEventListener('click', function() {
+          legalModal.classList.remove('show');
+        });
+      }
+
+      window.addEventListener('click', function(event) {
+        if (event.target === legalModal) {
+          legalModal.classList.remove('show');
+        }
+      });
+
+      // Rate limiting for contact form
+      const contactForm = document.getElementById('contact-form');
+      let lastSubmitTime = 0;
+      const RATE_LIMIT_SECONDS = 60;
+
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const now = Date.now();
+        const timeSinceLastSubmit = (now - lastSubmitTime) / 1000;
+
+        if (timeSinceLastSubmit < RATE_LIMIT_SECONDS) {
+          const waitTime = Math.ceil(RATE_LIMIT_SECONDS - timeSinceLastSubmit);
+          alert(`Please wait ${waitTime} seconds before submitting another form.`);
+          return;
+        }
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const project = document.getElementById('project').value;
+        const message = document.getElementById('message').value.trim();
+
+        // Basic validation
+        if (!name || !email || !project || !message) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        const emailBody =
+          `Company/Name: ${name}\nEmail: ${email}\nProject: ${project}\nMessage:\n${message}`;
+
+        const mailtoLink = `mailto:naiunify@gmail.com?subject=${encodeURIComponent('New project inquiry from NaiUnify site')}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoLink;
+        lastSubmitTime = now;
+        contactForm.reset();
+      });
+
+      const backToTopButton = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove('hidden');
+        } else {
+          backToTopButton.classList.add('hidden');
+        }
+      });
+
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId.length > 1) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const nav = document.querySelector('nav');
+              const navHeight = nav ? nav.offsetHeight : 0;
+              const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - navHeight - 16; // small spacing
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
