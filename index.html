@@ -541,7 +541,7 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-16" data-aos="fade-up">
         <span class="accent-pill mb-3 inline-block">Services</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">What our teams deliver</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What we deliver</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto">
           From concept to launch to lifecycle support, NaiUnify is the engineering backbone behind mission-critical
           experiences.
@@ -699,13 +699,7 @@
     </div>
   </div>
 
-  <!-- Legal Modal -->
-  <div id="legal-modal" class="modal">
-    <div class="modal-content">
-      <span class="close close-legal text-2xl cursor-pointer">&times;</span>
-      <div id="legal-modal-content"></div>
-    </div>
-  </div>
+
 
   <!-- Process -->
   <section id="process" class="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
@@ -769,7 +763,6 @@
       <div class="grid lg:grid-cols-1 gap-12 items-center">
         <div data-aos="fade-right">
           <span class="accent-pill mb-4 inline-block">About NaiUnify</span>
-          <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900">A team of engineers, designers and analysts</h2>
           <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
             NaiUnify was founded to give enterprises and businesses a product that blends strategic advisory with
             engineering. We are headquartered in Nairobi.
@@ -973,9 +966,9 @@
       <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <p class="text-gray-500 text-xs md:text-sm">© 2026 NaiUnify. All rights reserved.</p>
         <div class="flex gap-6 md:gap-8 items-center">
-          <a id="privacy-link" href="javascript:void(0)"
+          <a id="privacy-link" href="privacy-policy.html"
             class="text-gray-500 hover:text-white text-xs md:text-sm transition duration-300">Privacy Policy</a>
-          <a id="terms-link" href="javascript:void(0)"
+          <a id="terms-link" href="terms-of-service.html"
             class="text-gray-500 hover:text-white text-xs md:text-sm transition duration-300">Terms of Service</a>
         </div>
       </div>
@@ -984,12 +977,12 @@
 
   <!-- WhatsApp & Back to Top -->
   <a href="https://wa.me/254768838843?text=Hi%2C%20I%E2%80%99d%20like%20to%20discuss%20a%20project.%20I%E2%80%99m%20interested%20in%20having%20a%20system%20for%20my%20business%20and%20would%20like%20to%20understand%20how%20your%20process%20works%2C%20explain%20my%20business%20needs%2C%20the%20estimated%20cost%2C%20and%20how%20we%20can%20move%20forward."
-    class="fixed bottom-6 left-6 bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-full p-4 shadow-xl z-40 w-16 h-16 flex items-center justify-center transition-all hover:scale-110 duration-300"
+    class="fixed bottom-6 left-6 bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-full p-3 shadow-xl z-40 w-12 h-12 flex items-center justify-center transition-all hover:scale-110 duration-300"
     target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
     <i class="fab fa-whatsapp text-2xl"></i>
   </a>
   <button id="back-to-top"
-    class="fixed bottom-6 right-6 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-xl hidden w-16 h-16 flex items-center justify-center transition-all hover:scale-110 duration-300"
+    class="fixed bottom-6 right-6 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-3 shadow-xl hidden w-12 h-12 flex items-center justify-center transition-all hover:scale-110 duration-300"
     aria-label="Back to top">
     <i class="fas fa-chevron-up text-xl"></i>
   </button>
@@ -1152,61 +1145,7 @@
         }
       });
 
-      // Legal modal for Privacy Policy and Terms of Service
-      const legalModal = document.getElementById('legal-modal');
-      const legalContent = document.getElementById('legal-modal-content');
-      const privacyLink = document.getElementById('privacy-link');
-      const termsLink = document.getElementById('terms-link');
-      const legalCloseButton = document.querySelector('.close-legal');
 
-      const legalCopy = {
-        privacy: `
-          <h3 class="text-2xl font-bold mb-4">Privacy Policy</h3>
-          <p class="text-gray-700 mb-3">NaiUnify respects your privacy and is committed to protecting any personal information you share with us.</p>
-          <p class="text-gray-700 mb-3">We collect contact details and project information only when you voluntarily submit them through our forms or communication channels. This information is used solely to respond to your inquiries, prepare proposals, and deliver our services.</p>
-          <p class="text-gray-700 mb-3">We do not sell your data to third parties. Limited sharing may occur with trusted partners only when necessary to deliver a specific engagement, and always under confidentiality obligations.</p>
-          <p class="text-gray-700 mb-3">We take reasonable technical and organizational measures to secure your data, including restricted access, encrypted communication channels where appropriate, and periodic reviews of our practices.</p>
-        `,
-        terms: `
-          <h3 class="text-2xl font-bold mb-4">Terms of Service</h3>
-          <p class="text-gray-700 mb-3">By accessing or using the NaiUnify website, you agree to these terms of service.</p>
-          <p class="text-gray-700 mb-3">All content on this site, including branding, copy, visuals, and layouts, is provided for general information about our services and does not constitute legal, financial, or technical advice.</p>
-          <p class="text-gray-700 mb-3">Any project or consulting engagement with NaiUnify will be governed by a separate written agreement that outlines scope, deliverables, timelines, fees, and responsibilities.</p>
-          <p class="text-gray-700 mb-3">You agree not to misuse this site, attempt unauthorized access, or engage in activities that could harm the platform or other users.</p>
-          <p class="text-gray-700 mb-3">We may update these terms periodically. Continued use of the site after changes are posted constitutes acceptance of the updated terms.</p>
-        `
-      };
-
-      function openLegalModal(type) {
-        legalContent.innerHTML = legalCopy[type] || '';
-        legalModal.classList.add('show');
-      }
-
-      if (privacyLink) {
-        privacyLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          openLegalModal('privacy');
-        });
-      }
-
-      if (termsLink) {
-        termsLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          openLegalModal('terms');
-        });
-      }
-
-      if (legalCloseButton) {
-        legalCloseButton.addEventListener('click', function() {
-          legalModal.classList.remove('show');
-        });
-      }
-
-      window.addEventListener('click', function(event) {
-        if (event.target === legalModal) {
-          legalModal.classList.remove('show');
-        }
-      });
 
       // Rate limiting for contact form
       const contactForm = document.getElementById('contact-form');
