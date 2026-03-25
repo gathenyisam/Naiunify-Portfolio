@@ -28,7 +28,7 @@ High-performance websites lead to better user engagement, higher conversion rate
 
 **Solution:**
 
-*   **Minify Inline Code:** While you are using a CDN for libraries, the inline `<style>` and `<script>` blocks in your HTML are not minified. For a production site, it is better to move all your custom CSS and JavaScript into external files and minify them.
+- **Minify Inline Code:** While you are using a CDN for libraries, the inline `<style>` and `<script>` blocks in your HTML are not minified. For a production site, it is better to move all your custom CSS and JavaScript into external files and minify them.
 
 **Step-by-Step Implementation:**
 
@@ -37,7 +37,7 @@ High-performance websites lead to better user engagement, higher conversion rate
 3.  **Minify the files:** Use an online tool or a command-line utility like `terser` (for JS) and `cssnano` (for CSS) to minify these files.
 4.  **Link the minified files:** Link the minified files in your HTML:
     ```html
-    <link rel="stylesheet" href="custom.min.css">
+    <link rel="stylesheet" href="custom.min.css" />
     <script src="custom.min.js" defer></script>
     ```
 
@@ -47,7 +47,7 @@ High-performance websites lead to better user engagement, higher conversion rate
 
 **Solution:**
 
-*   **Leverage Browser Caching:** Configure your web server to send `Cache-Control` headers. This tells the browser to store static files for a specified period, so they don't need to be re-downloaded.
+- **Leverage Browser Caching:** Configure your web server to send `Cache-Control` headers. This tells the browser to store static files for a specified period, so they don't need to be re-downloaded.
 
 **Step-by-Step Implementation (for an Apache server):**
 
@@ -72,7 +72,7 @@ High-performance websites lead to better user engagement, higher conversion rate
 
 **Solution:**
 
-*   **Enable HTTPS:** Obtain an SSL/TLS certificate and configure your server to use it.
+- **Enable HTTPS:** Obtain an SSL/TLS certificate and configure your server to use it.
 
 **Step-by-Step Implementation:**
 
@@ -93,7 +93,7 @@ High-performance websites lead to better user engagement, higher conversion rate
 
 **Solution:**
 
-*   **Use Git:** Git is a version control system that allows you to track changes to your code, collaborate with others, and easily roll back to previous versions.
+- **Use Git:** Git is a version control system that allows you to track changes to your code, collaborate with others, and easily roll back to previous versions.
 
 **Step-by-Step Implementation:**
 
@@ -106,8 +106,8 @@ High-performance websites lead to better user engagement, higher conversion rate
 
 Your website is already quite modern, but here are a few suggestions:
 
-*   **Contact Form:** The contact form uses a `mailto:` link, which is not ideal because it relies on the user having a configured email client.
-    *   **Solution:** Use a backend service (like a serverless function) or a third-party service (like Formspree or Netlify Forms) to handle form submissions. This will provide a more seamless experience for the user.
-*   **Animations:** The AOS (Animate on Scroll) library is used effectively. Consider adding more subtle micro-interactions to buttons and links to improve the user experience.
+- **Contact Form:** The contact form uses a `mailto:` link, which is not ideal because it relies on the user having a configured email client.
+  - **Solution:** Use a backend service (like a serverless function) or a third-party service (like Formspree or Netlify Forms) to handle form submissions. This will provide a more seamless experience for the user.
+- **Animations:** The AOS (Animate on Scroll) library is used effectively. Consider adding more subtle micro-interactions to buttons and links to improve the user experience.
 
 By implementing these improvements, you can significantly enhance your website's performance, security, and maintainability.
